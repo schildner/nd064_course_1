@@ -11,6 +11,7 @@ db_connections_count = 0
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    global db_connections_count
     db_connections_count += 1
     app.logger.info('DB connection successfull')
     return connection
@@ -87,7 +88,7 @@ def status():
 @app.route('/metrics')
 def metrics():
     db_connection = get_db_connection()
-    posts = db_connection.execute('SELECT COUNT(*) FROM posts').fetchone[0]
+    posts = db_connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
 
     db_connection.close()
 
