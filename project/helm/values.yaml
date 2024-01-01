@@ -28,6 +28,9 @@ resources:
 containerPort: 3111
 livenessProbe:
   path: /healthz
+  initialDelaySeconds: 120
+  periodSeconds: 60
 readinessProbe:
   path: /healthz
   initialDelaySeconds: 60
+  periodSeconds: 30
