@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: techtrends-staging
+  namespace: argocd
+spec:
+  destination:
+    namespace: staging
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values-staging.yaml
+    path: project/helm
+    repoURL: https://github.com/schildner/udacity_nd064_cloud_native_architecture_project_1
+    targetRevision: HEAD
