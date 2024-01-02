@@ -27,14 +27,14 @@ spec:
               cpu: {{ .Values.resources.limits.cpu }}
               memory: {{ .Values.resources.limits.memory }}
           livenessProbe:
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds}}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
             httpGet:
               path: {{ .Values.livenessProbe.path }}
               port: {{ .Values.containerPort }}
-              initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds}}
-              periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
           readinessProbe:
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds}}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
             httpGet:
               path: {{ .Values.readinessProbe.path }}
               port: {{ .Values.containerPort }}
-              initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds}}
-              periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
