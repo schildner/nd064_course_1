@@ -75,7 +75,7 @@ def create():
 
     return render_template('create.html')
 
-@app.route('/healtz')
+@app.route('/healthz')
 def status():
     response = app.response_class(
             response=json.dumps({"result":"OK - healthy"}),
